@@ -1,0 +1,41 @@
+Data engineering as of writing this has a confusing variety of tools available to suit any given task. The choice of technology is tactical whereas architecture is strategic. 
+
+Important factors to consider:
+- Team size and capabilities
+  - Some technologies are more complex than others for the specific skills your team has.
+- Speed to market
+  - What technologies will let you team deliver value fastest?
+- Interoperability
+  - Does the blend of tehcnologies you have chosen integrate well with each other? Are there well-defined APIs, integration software, etc?
+- Cost optimization and business value
+  - Consider don't just upfront investment but TOCO (total opportunity cost of ownership). If you have decided to commit X amount of resources and money to a technology, you have decided not to pursue other things with these money and resources - what are those things?
+- Today versus the future: immutable versus transitory technologies
+  - Consider if the technologies that you're using are still the best in class, still have good support, and still fit your usecase every two years.
+- Location (cloud, on prem, hybrid cloud, multicloud)
+  - On prem means you own your hardware. This is reliable but slowest.
+  - Cloud means you rent VMs and services that run on them from a producer. Pricing is often much more difficult to understand but essential (treating cloud as the same to OP will cause huge overspend). 
+  - Hybrid cloud means some things stay on premises and some are in the cloud. Analytics very frequently are the in-cloud part. This is because data egress is expensive but egress is almost free.
+  - Multicloud means using in combination solutions from different cloud providers (because of unique capabilities or good discounts). 
+  - Overall recommendation - make decisions based on the present, landscape is changing too frequently.
+- Build versus buy
+  - Community OSS - best to choose high mindshare, mature tools that are well managed
+  - Commercial OSS - are the non-free additions useful to you? how good is the support? is the vendor financially viable?
+  - Proprietary independent - is the proprietary product interoperable with other parts of your system? does it have mindshare? how good is the support?
+  - Proprietary from cloud vendors - what is the TOCO? do you understand the pricing model and is it affordable for you?
+- Monolith versus modular
+  - A monolith is a single huge piece of software that releases as one and supports many things. Easy to project-manage in a waterfall and reason about, but brittle and slow to develop. In case of DE software, if the product dies, you will have a problem if you used it for many things.
+  - Modular uses different technologies at different places. It's harder to think about but more adaptable and faster. 
+  - Modular is somewhat favored by the authors of the book, argument being that the tech landscape is so quickly shifting that the flexibility to choose the best tooling is worth it.
+- Serverless versus servers
+  - Serverless means that the cloud vendor manages infrastructure (not just the hardware, but the low-level software like the VM) for you. Server means you still have direct access to a VM. 
+  - Serverless is cheaper than server with low usage, and more expensive than high usage. Do the math in your project's case, with the help of your FinOps specialists.
+  - Serverless tends to be better at simple, predictable and discreet workloads.  
+    - Serverless has limits in terms of how frequently it can run, how long it takes, and its networking capactities. 
+- Optimization, performance, and the benchmark wars
+  - Be aware that benchmarks in the data space often aren't correct and skew to benefit whoever presents the benchmark. Caveat emptor, do your own research.
+- The undercurrents of the data engineering lifecycle
+  - Data mgmt: is the tool going to be compatible with your GDPR, CCPA, etc commitments?
+  - DataOps: is the tool monitorable? Do you understand it well enough to respond to incidents?
+  - Architecture: is the tool able to achieve the goals your architecture design needs it to achieve? Is it a reversible choice?
+  - SWE: strive for abstraction and use prebuild options, especially OSS, if you can. Build the things that give competitive advantage. 
+    - Also, consider if the tool can be used consistently with good SWE principles (can it be managed as code? can you code it while DRY? etc)
